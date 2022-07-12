@@ -1,5 +1,17 @@
 
+<?php
 
+    session_start();
+    if($_POST){
+        if($_POST['usuario'] == 'admin' && $_POST['contraseña'] == '123123'){
+            $_SESSION['usuario']=$_POST['usuario'];
+            header('location: sections/index.php');
+        }else{
+            $mensaje="Los datos son incorrectos";
+        }
+    }
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,12 +30,20 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-4">
                 <br>
-                <form action="sections/index.php" method="post">
+                <form action="" method="post">
                     <div class="card">
                         <div class="card-header">
                             Incio de sesion
                         </div>
                         <div class="card-body">
+                            <?php if(isset($mensaje)) { ?>
+
+                                <div class="alert alert-danger" role="alert">
+                                    <strong><?php echo $mensaje;?></strong>
+                                </div>
+                                
+
+                            <?php } ?>
                             <br>
                             <div class="mb-3">
                                 <label for="" class="form-label">Usuario</label>

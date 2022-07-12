@@ -23,7 +23,6 @@
                 $consulta->bindParam(':nombre_curso', $nombre_curso);
                 $consulta->bindParam(':id', $id);
                 $consulta->execute();
-                echo $sql;
                 break;
             case 'borrar';
                 $sql = "DELETE FROM cursos WHERE id=:id";
@@ -39,7 +38,6 @@
                 $consulta->bindParam(':id', $id);
                 $consulta->execute();
                 $curso=$consulta->fetch(PDO::FETCH_ASSOC);
-                print_r($curso);
                 $nombre_curso=$curso['nombre_curso'];
 
                 break;
